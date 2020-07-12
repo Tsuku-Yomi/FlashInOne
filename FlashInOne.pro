@@ -30,8 +30,8 @@ SOURCES += \
 
 HEADERS += \
         mainwidget.h \
-    entity.h \
-    basestand.h
+    basestand.h \
+    entity.h
 
 FORMS += \
         mainwidget.ui

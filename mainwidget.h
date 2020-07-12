@@ -11,20 +11,12 @@
 
 //运行界面
 
-namespace Ui {
-class MainWidget;
-}
-
-class MainWidget : public QWidget
+class MainView:public QGraphicsView
 {
-    Q_OBJECT
-
 public:
-    explicit MainWidget(QWidget *parent = 0);
-    ~MainWidget();
-private:
-    Ui::MainWidget* ui;
-    QGraphicsScene* GameScene;
+    MainView(QGraphicsScene*);
+protected:
+    void resizeEvent(QResizeEvent *) override;
 };
 
 #endif // MAINWIDGET_H

@@ -1,16 +1,14 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
 
-MainWidget::MainWidget(QWidget *parent) :
-    QWidget(parent),
-    ui(new Ui::MainWidget)
+
+
+MainView::MainView(QGraphicsScene *T):QGraphicsView(T)
 {
-    ui->setupUi(this);
-    GameScene=new QGraphicsScene;
-    QGraphicsScene::
+
 }
 
-MainWidget::~MainWidget()
+void MainView::resizeEvent(QResizeEvent *T)
 {
-    delete ui;
+
 }

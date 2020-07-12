@@ -14,7 +14,11 @@
 class Entity:public QGraphicsItem
 {
 public:
-    Entity();
+    Entity(
+            QGraphicsItem *parent=NULL,
+            int SpawnHP=-1,
+            Speed SpawnSpd=Speed()
+          );
     virtual ~Entity();
     virtual int Tick_Work()=0;
     virtual void Destroy();

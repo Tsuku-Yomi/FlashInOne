@@ -20,7 +20,7 @@ struct Speed
         dx+=_dx;
         dy+=_dy;
     }
-}
+};
 
 
 #endif // BASESTAND_H
