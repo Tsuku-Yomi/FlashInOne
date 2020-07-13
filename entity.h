@@ -20,9 +20,11 @@ public:
             Speed SpawnSpd=Speed()
           );
     virtual ~Entity();
-    virtual int Tick_Work()=0;
+    virtual int Tick_Body_Work()=0;
+	virtual int Tick_AI_Work()=0;
     virtual void Destroy();
-
+	virtual int Be_Hit(int Damage);
+	virtual bool Tick_Run_Fun();//帧运行函数
 private:
     int HealthPoint;
     Speed Spd;
