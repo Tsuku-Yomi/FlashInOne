@@ -22,5 +22,22 @@ struct Speed
     }
 };
 
+struct BasicAttribute
+{
+    bool UnBreakable;
+    double CollisionSizeRadius;
+
+
+
+    BasicAttribute(bool _UnBreakable=false,
+                   double _CollisionSizeRadius=1
+                  ):
+    UnBreakable(_UnBreakable),
+    CollisionSizeRadius(_CollisionSizeRadius)
+    {
+
+    }
+};
+
 
 #endif // BASESTAND_H
