@@ -1,68 +1,68 @@
 #include "Obstacle.h"
 
 
-Obstacle::Obstacle()//¿Õ¹¹Ôìº¯Êı
+Obstacle::Obstacle()
 {
-	num = 0;//ÕÏ°­ÎïÊµÌå±àºÅ=0
-	existence = false;//¸ÃÕÏ°­Îï²»´æÔÚ
-	litters.clear();//Çå¿ÕµôÂä±í
+	num = 0;
+	existence = false;
+	litters.clear();
 }
 
 
 
 
 Obstacle::Obstacle(int inum, int count, int lnum[], int lpr[])
-{//·Ö±ğ±íÊ¾´«Èë:ÕÏ°­ÎïÊµÌå±àºÅ,µôÂäÎïÊıÁ¿,µôÂäÎïÊµÌå±àºÅÊı×é,µôÂäÎï¸ÅÂÊÊı×é
+{//åˆ†åˆ«è¡¨ç¤ºä¼ å…¥:éšœç¢ç‰©å®ä½“ç¼–å·,æ‰è½ç‰©æ•°é‡,æ‰è½ç‰©å®ä½“ç¼–å·æ•°ç»„,æ‰è½ç‰©æ¦‚ç‡æ•°ç»„
 
-	num = inum;//ÊäÈëÕÏ°­ÎïÊµÌå±àºÅ
-	litters.clear();//Çå¿ÕµôÂä±í
-	if (num)//µ±ÕÏ°­ÎïÊµÌå±àºÅ²»Îª0Ê±
+	num = inum;
+	litters.clear();//æ¸…ç©ºæ‰è½è¡¨
+	if (num)//å½“éšœç¢ç‰©å®ä½“ç¼–å·ä¸ä¸º0æ—¶
 	{
 		for (int judge = 0; judge < count; judge++)
 		{
-			litters.push_back(std::make_pair(lnum[judge], lpr[judge]));//´«ÈëµôÂäÎïÊµÌå±àºÅ,µôÂäÎï¸ÅÂÊ
+			litters.push_back(std::make_pair(lnum[judge], lpr[judge]));//ä¼ å…¥æ‰è½ç‰©å®ä½“ç¼–å·,æ‰è½ç‰©æ¦‚ç‡
 		}
-		existence = true;//¸ÃÕÏ°­Îï´æÔÚ
+		existence = true;
 	}
-	else existence = false;//¸ÃÕÏ°­Îï²»´æÔÚ
+	else existence = false;
 }
 
 
-Obstacle::~Obstacle()//Îö¹¹º¯Êı,ÊÍ·ÅÄÚ´æ
+Obstacle::~Obstacle()
 {
-	num = 0;//ÕÏ°­ÎïÊµÌå±àºÅ=0
-	existence = false;//¸ÃÕÏ°­Îï²»´æÔÚ
-	litters.clear();//Çå¿ÕµôÂä±í
+	num = 0;
+	existence = false;
+	litters.clear();
 }
 
 
-int Obstacle::Drop()//µôÂäº¯Êı
+int Obstacle::Drop()
 {
-	int result = 0;//³é½±½á¹û±äÁ¿
+	int result = 0;//æŠ½å¥–ç»“æœå˜é‡
 	if (num)
 	{
-		int total = 0;//¸ÅÂÊ×ÜÊı
-		int size = 0;//ÈİÆ÷´óĞ¡
-		int judge = 0;//ÅĞ¶ÏÌõ¼ş
-		size = (int)litters.size();//»ñÈ¡ÈİÆ÷ÔªËØ¸öÊı
+		int total = 0;//æ¦‚ç‡æ€»æ•°
+		int size = 0;//å®¹å™¨å¤§å°
+		int judge = 0;//åˆ¤æ–­æ¡ä»¶
+		size = (int)litters.size();//è·å–å®¹å™¨å…ƒç´ ä¸ªæ•°
 		for (judge = 0; judge < size; judge++)
 		{
-			total += litters[judge].second;//×Ü¸ÅÂÊ
+			total += litters[judge].second;//æ€»æ¦‚ç‡
 		}
-		srand((unsigned)time(NULL));//²úÉúËæ»úÖÖ×Ó
-		result = (int)rand();//Ë¢ĞÂrandº¯Êı?
-		result = (int)(((double)rand() / RAND_MAX) * total);//»ñÈ¡Ëæ»ú½á¹û
+		srand((unsigned)time(NULL));//äº§ç”Ÿéšæœºç§å­
+		result = (int)rand();//åˆ·æ–°randå‡½æ•°?
+		result = (int)(((double)rand() / RAND_MAX) * total);//è·å–éšæœºç»“æœ
 		for (judge = 0, total = litters[0].second; judge < size; judge++)
 		{
-			if (result <= total)//Èô½á¹ûĞ¡ÓÚµ±Ç°¸ÅÂÊ
+			if (result <= total)
 			{
-				break;//Ôò´ËÊ±judgeÎªÑ¡ÖĞµÄµôÂäÎïÓÚµôÂä±íÖĞµÄÎ»ÖÃ
+				break;
 			}
-			else total += litters[judge].second;//·ñÔòÅÅ³ı
+			else total += litters[judge].second;
 		}
-		result = litters[judge].first;//·µ»Ø³éÖĞµÄµôÂäÎïÊµÌå±àºÅ
+		result = litters[judge].first;//è¿”å›æŠ½ä¸­çš„æ‰è½ç‰©å®ä½“ç¼–å·
 	}
 	else result = 0;
-	delete this;//É¾³ı¸ÃÀà
+	delete this;
 	return result;
 }
