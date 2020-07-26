@@ -8,16 +8,16 @@
 class Obstacle : public Entity
 {
 public:
-	Obstacle();	//¿Õ¹¹Ôìº¯Êı
-	Obstacle(int inum, int count, int lnum[], int lpr[]);	//±ê×¼¹¹Ôìº¯Êı
-	~Obstacle();//Îö¹¹º¯Êı
-	int Drop();	//µôÂäº¯Êı,·µ»ØµôÂäÎïÊµÌå±àºÅ
+	Obstacle();
+	Obstacle(int inum, int count, int lnum[], int lpr[]);	//æ ‡å‡†æ„é€ å‡½æ•°
+	~Obstacle();	//ææ„å‡½æ•°
+	int Drop();	//æ‰è½å‡½æ•°,è¿”å›æ‰è½ç‰©å®ä½“ç¼–å·
 
-	bool existence;//´æÔÚÅĞ¶¨ 
+	bool existence;//å­˜åœ¨åˆ¤å®šå˜é‡
 
 private:
-	int num;	//ÕÏ°­ÎïÊµÌå±àºÅ
+	int num;	//éšœç¢ç‰©å®ä½“ç¼–å·
 
-	std::vector <std::pair<int, int>> litters;	//µôÂäÎïÊµÌå±àºÅ,¸ÅÂÊ
+	std::vector <std::pair<int, int>> litters;	//æ‰è½ç‰©å®ä½“ç¼–å·,æ¦‚ç‡
 };
 
