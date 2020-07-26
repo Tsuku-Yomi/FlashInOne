@@ -63,5 +63,6 @@ int Obstacle::Drop()
 		result = litters[judge].first;//返回抽中的掉落物实体编号
 	}
 	else result = 0;
+	existence = false;
 	return result;
 }
