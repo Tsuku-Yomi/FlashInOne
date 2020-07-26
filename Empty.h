@@ -3,6 +3,10 @@
 
 class Empty : public Entity
 {
+public:
+
+private:
+
 
 };
 
