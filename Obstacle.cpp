@@ -65,16 +65,16 @@ bool Obstacle::Drop(int* item_1, int* item_2)//掉落函数
 		*item_1 = litters[judge].first;//返回抽中的掉落物实体编号
 		if (multiple)
 		{//若掉落多个物品(2个)
-			result = (int)(((double)rand() / RAND_MAX) * total);//获取随机结果
+			result = (int)(((double)rand() / RAND_MAX) * total);
 			for (judge = 0, total = litters[0].second; judge < size; judge++)
 			{
-				if (result <= total)//若结果小于当前概率
+				if (result <= total)
 				{
-					break;//则此时judge为选中的掉落物于掉落表中的位置
+					break;
 				}
-				else total += litters[judge].second;//否则排除
+				else total += litters[judge].second;
 			}
-			*item_2 = litters[judge].first;//返回抽中的掉落物实体编号
+			*item_2 = litters[judge].first;
 		}
 		else *item_2 = 0;//无物品(即掉落金币)
 	}
