@@ -36,9 +36,10 @@ Obstacle::~Obstacle()
 }
 
 
-int Obstacle::Drop()
+bool Obstacle::Drop(int* item_1, int* item_2)//掉落函数
 {
 	int result = 0;//抽奖结果变量
+	bool multiple = false;//掉落多物品变量
 	if (num)
 	{
 		int total = 0;//概率总数
@@ -52,17 +53,36 @@ int Obstacle::Drop()
 		srand((unsigned)time(NULL));//产生随机种子
 		result = (int)rand();//刷新rand函数?
 		result = (int)(((double)rand() / RAND_MAX) * total);//获取随机结果
+		multiple = result % 2;//利用随机结果获取是否掉落多物品
 		for (judge = 0, total = litters[0].second; judge < size; judge++)
 		{
-			if (result <= total)
+			if (result <= total)//若结果小于当前概率
 			{
-				break;
+				break;//则此时judge为选中的掉落物于掉落表中的位置
 			}
-			else total += litters[judge].second;
+			else total += litters[judge].second;//否则排除
 		}
-		result = litters[judge].first;//返回抽中的掉落物实体编号
+		*item_1 = litters[judge].first;//返回抽中的掉落物实体编号
+		if (multiple)
+		{//若掉落多个物品(2个)
+			result = (int)(((double)rand() / RAND_MAX) * total);//获取随机结果
+			for (judge = 0, total = litters[0].second; judge < size; judge++)
+			{
+				if (result <= total)//若结果小于当前概率
+				{
+					break;//则此时judge为选中的掉落物于掉落表中的位置
+				}
+				else total += litters[judge].second;//否则排除
+			}
+			*item_2 = litters[judge].first;//返回抽中的掉落物实体编号
+		}
+		else *item_2 = 0;//无物品(即掉落金币)
 	}
-	else result = 0;
+	else
+	{
+		*item_1 = 0;
+		*item_2 = 0;
+	}
 	existence = false;
-	return result;
+	return multiple;
 }
