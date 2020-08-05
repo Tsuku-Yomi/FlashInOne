@@ -11,7 +11,7 @@ public:
 	Obstacle();
 	Obstacle(int inum, int count, int lnum[], int lpr[]);	//标准构造函数
 	~Obstacle();	//析构函数
-	int Drop();	//掉落函数,返回掉落物实体编号
+	bool Drop(int* item_1, int* item_2);	//掉落函数,返回掉落物实体编号
 
 	bool existence;//存在判定变量
 
