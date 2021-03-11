@@ -51,8 +51,7 @@ bool Obstacle::Drop(int* item_1, int* item_2)//掉落函数
 			total += litters[judge].second;//总概率
 		}
 		srand((unsigned)time(NULL));//产生随机种子
-		result = (int)rand();//刷新rand函数?
-		result = (int)(((double)rand() / RAND_MAX) * total);//获取随机结果
+		result = (int)(rand() % (total + 1));//获取随机结果
 		multiple = result % 2;//利用随机结果获取是否掉落多物品
 		for (judge = 0, total = litters[0].second; judge < size; judge++)
 		{
